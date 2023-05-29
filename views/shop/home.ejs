@@ -1,0 +1,113 @@
+<%- include ../partials/header %> <%- include ../partials/categories-navbar%>
+<div id="carouselC" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselC" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselC" data-slide-to="1"></li>
+    <li data-target="#carouselC" data-slide-to="2"></li>
+    <li data-target="#carouselC" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 h-25" src="images/slide1.jpg" alt="First slide"/>
+      <div class="carousel-caption">
+        <h3 >Fresh Vegetabels</h3>
+        <p>Fresh Vegetabels pulled straight from farms to your doorstep.</p>
+       <p><a href="/products/vegetables" class="btn btn-outline-light">Shop now</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 h-25" src="images/slide2.jpg" alt="Second slide"/>      
+      <div class="carousel-caption">
+        <h3>Fresh and Juicy Fruits</h3>
+        <p>Hand picked fresh fruits to your doorstep.</p>
+       <p><a href="/products/fruits" class="btn btn-outline-light">Shop now</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 h-25" src="images/slide3.jpg" alt="Third slide"/>      
+      <div class="carousel-caption">
+        <h3>Your favourite dairy brands</h3>
+        <p>Can't run an errand? We got you covered with your favourite brands.</p>
+       <p><a href="/products/dairy" class="btn btn-outline-light">Shop now</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 h-25" src="images/slide4.jpg" alt="Fourth slide"/>      
+      <div class="carousel-caption">
+        <h3>Fresh and Organic Poultry</h3>
+        <p>Antibiotic residue free chicken and organic poultry products.</p>
+       <p><a href="/products/meat" class="btn btn-outline-light">Shop now</a></p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselC" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselC" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<hr class="gradient-style" />
+<!-- category -->
+<div class="container">
+  <h3 class="text-center mb-3 mt-4">Store's Categories</h3>
+  <% if (categories) { %>
+  <div class="row text-center">
+    <% for(let i=0; i<4; i++){ %>
+    <div class="col-lg-2 text-center ml-2">
+      <a class="title-link" href="/products/<%=categories[i].slug%>">
+        <img src="images/dept<%=i%>.webp" alt="category" class="circle-img" />
+        <h4 class="mb-3 mt-3"><%=categories[i].title%></h4>
+      </a>
+    </div>
+    <%} %>
+    <div class="col-lg-2 text-center ml-2">
+    <div>
+      <a class="title-link" href="/products/">
+        <img src="images/allprods.png" alt="category" class="circle-img" /> </a>
+        <h4 class="mb-3 mt-3">All Products</h4>
+    </div>
+  </div>
+  </div>
+  <%}%>
+</div>
+<hr class="gradient-style" />
+
+
+<div class="container">
+  <h2 class="text-center mb-3 mt-4">See what our customer's say</h2>
+</div>
+
+<div class="mains">
+<article class="review">
+  <div class="img-container">
+    <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg" alt="" id="person-img" />
+  </div>
+
+  <h2 id="author">sara jones</h2>
+  <p id="info">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+    asperiores debitis incidunt, eius earum ipsam cupiditate libero?
+    Iste, doloremque nihil?
+  </p>
+  <div class="button-container">
+    <button class="prev-btn btns">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="next-btn btns">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</article>
+</div>
+<hr class="gradient-style" />
+
+<div class="container">
+  <h2 class="text-center mb-5 mt-4">Our location:</h2>
+  <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.085763580712!2d72.87429697471852!3d18.660147044053257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be87a1828795705%3A0x41db5c20ef468b4a!2sMV6G%2B3W5%2C%20Vidya%20Nagar%2C%20Alibag%2C%20Maharashtra%20402201!5e0!3m2!1sen!2sin!4v1663997339448!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<hr class="gradient-style" />
+
+<%- include ../partials/footer %>

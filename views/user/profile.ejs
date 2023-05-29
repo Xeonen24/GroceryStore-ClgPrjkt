@@ -1,0 +1,80 @@
+<%- include ../partials/header %>
+<%- include ../partials/categories-navbar %>
+
+<div class="container">
+  <!-- Flash messages -->
+      <div class="row mt-3 mb-3">
+        <div class="col-md-8 m-auto">
+          <% if (successMsg) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+          <div id="success" class="alert alert-success d-none"></div>
+          <% } %>
+        </div>
+        <div class="col-md-8 m-auto">
+          <% if (errorMsg) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+          </div>
+          <% } else { %>
+          <div id="error" class="alert alert-danger d-none"></div>
+          <% } %>
+        </div>
+      </div>
+  <!-- User's orders -->
+  <div class="row mt-4">
+    <div class="col-md-8 m-auto">
+      <% if (orders != null && orders.length > 0) { %>
+      <h3>My orders</h3>
+      <% orders.forEach( order => { %>
+      <div class="card m-3">
+        <div class="card-body">
+          <p class="card-text ">
+            <ul class="list-group">
+              <h5>Order Details:</h5>
+              <% order.cart.items.forEach( item => { %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= item.title %> | Quantity: <%=   item.qty %>
+                <span class="badge badge-info badge-pill">₹<%= item.price %></span>
+              </li>
+              <%}) %>
+            </ul>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= %> Order status: <%= %>
+              <% if(order.Delivered === true) { %>
+                <span class="badge badge-success "><%= %>Delivered</span>
+              <%} else if(order.Returning === true){ %>
+                <span class="badge badge-danger "><%= %>Returning</span>
+              <%} else { %>
+                <span class="badge badge-warning "><%= %>On the Way</span>
+              <%} %>
+            </li>
+          </p>
+          <h5>Shipping Details:</h5>
+          <li class="list-group-item">
+          <p>Name:  <%= order.name %></p>
+          <p>Mobile:  <%= order.phonenum %></p>
+          <p>Address: <%= order.address %>,<%= order.town %>,<%= order.state %>,<%= order.pincode %>,India</p>
+          <p>Order ID:  <%= order.paymentId %></p>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Ordered on: <%= order.createdAt %>
+           </li>
+        </li>
+        </div>
+        <div class="card-footer">
+          <strong>Total Price: ₹<%= order.cart.totalCost %></strong>
+          <%=  %>
+        </div>
+      </div>
+      <%}) %>
+      <%} else { %>
+        <h3 class="text-center" >Oh no! Looks like you did not make any purchases.</h3>
+        <a  href="/products/"><h4 class="text-center" >Click here to visit the Store.</h4></a>
+      <%} %>
+    </div>
+  </div>
+</div>
+
+<%- include ../partials/footer %>

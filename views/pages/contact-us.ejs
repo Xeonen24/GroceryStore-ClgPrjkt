@@ -1,0 +1,87 @@
+<%- include ../partials/header %> <%- include ../partials/categories-navbar %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-12 m-auto">
+      <h1 class="mt-4 mb-4 text-center">Contact Us</h1>
+      <% if (successMsg != null && successMsg) { %>
+        <div id="success" class="alert alert-success">
+          <%= successMsg %>
+        </div>
+        <% } %>
+    </div>
+    <div class="col-lg-8 col-md-12 text-justify m-auto">
+    <div class="mt-4 mb-4">
+      <p>You are always welcome to contact us at anytime! Feel free to email us or phone us using our contact details below<br />
+        We reply to our emails even during the weekends. So please do not hesitate to contact us.
+      </p>
+    </div>
+      <div class="mt-4 mb-4">
+        <p>
+          <h6><i>Contact us by email:</i></h6>
+        </p>
+        <p>
+          For any inquiries:
+          <a href="mailto:captainsparkelz32@email.com">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <u>captainsparkelz32@email.com</u>
+          </a>
+        </p>
+      </div>
+      <div class="mt-4 mb-4">
+        <p>
+          <h6><i>Contact us by phone:</i></h6>
+        </p>
+        <p>
+          Phone number:
+          <a href="tel:9999999999">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            9999999999
+           </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact us form -->
+    <div class="col-lg-8 col-md-12 m-auto">
+      <div class="mt-5 mb-4">
+        <h2>Contact Us Form</h2>
+        <!-- Error flash message -->
+        <% if(errorMsg!=null && errorMsg.length>0) {%>
+          <div id="flash-msg" class="alert alert-danger">
+            <% errorMsg.forEach((message) => { %>
+            <p>
+              <%=message %>
+            </p>
+            <%}) %>
+          </div>
+          <%}%>
+        <form action="/pages/contact-us" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="name" class="form-control" name="name" id="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message contents</label>
+            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Please write your message here..." required></textarea>
+          </div>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button type="submit" class="btn btn-primary button-style">
+            Submit
+          </button>
+        </form>
+      </div>
+      <hr class="gradient-style">
+      <div class="container">
+        <h2 class="text-center mb-5 mt-4">Our location:</h2>
+        <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.085763580712!2d72.87429697471852!3d18.660147044053257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be87a1828795705%3A0x41db5c20ef468b4a!2sMV6G%2B3W5%2C%20Vidya%20Nagar%2C%20Alibag%2C%20Maharashtra%20402201!5e0!3m2!1sen!2sin!4v1663997339448!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include ../partials/footer %>

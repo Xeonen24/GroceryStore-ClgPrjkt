@@ -1,0 +1,121 @@
+<%- include ../partials/header %> <%- include ../partials/categories-navbar %>
+<div class="container mt-4 mb-5">
+  <div class="row mt-3 mb-3">
+    <div class="col-md-8 m-auto">
+      <% if (errorMsg) { %>
+      <div id="error" class="alert alert-danger">
+        <%= errorMsg %>
+      </div>
+      <% } else { %>
+      <div id="error" class="alert alert-danger d-none"></div>
+      <% } %>
+    </div>
+  </div>
+  <div class="col-md-8 m-auto">
+    <form action="/checkout" method="POST" id="checkout-form">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="card-name">Email:</label>
+            <input type="text" id="card-name" class="form-control" required value=<%=currentUser.email%> disabled>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="address">Full name:</label>
+            <input
+              type="text"
+              id="namef"
+              class="form-control"
+              required
+              name="namef"
+              value=<%=currentUser.username%>>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="address">Phone number:</label>
+            <input
+              type="number"
+              id="phone"
+              class="form-control"
+              required
+              name="phone"
+              onKeyPress="if(this.value.length==10) return false;"
+            />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="address">Your address:</label>
+            <input
+              type="text"
+              id="address"
+              class="form-control"
+              required
+              name="address"
+            />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="town">City/Town:</label>
+            <input
+              type="text"
+              id="town"
+              class="form-control"
+              required
+              value="Alibag"
+              name="town"
+            />
+          </div>
+        </div>
+        <div class="col-md-12">
+        <div class="form-group">
+          <label for="State">State:</label>
+            <input type="text" id="state" class="form-control" required name="state" value="Maharashtra"/>
+        </div>
+      </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="address">Pincode:</label>
+            <input
+              type="number"
+              id="pincode"
+              class="form-control"
+              required
+              name="pincode"
+              onKeyPress="if(this.value.length==6) return false;"
+            />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" class="form-control" required name="country" value="India" disabled/>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label >Card holder's name:</label>
+            <input type="text" class="form-control" required />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label for="card-element">Card Information:</label>
+          <div id="card-element" class="StripeElement"></div>
+          <div id="card-errors" role="alert" class="text-danger mb-3"></div>
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      </div>
+      <button id="submit-btn" type="submit" class="col-md-12 btn btn-dark btn-lg button-style">
+        CHECKOUT
+      </button>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript" src="javascripts/checkout.js"></script>
+
+<%- include ../partials/footer %>
